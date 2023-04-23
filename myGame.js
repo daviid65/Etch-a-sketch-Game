@@ -1,16 +1,17 @@
 const body = document.body; 
 const container = document.createElement("div");
-const gridContainer = document.createElement("div");
+const grid = document.createElement("div");
 const btnContainer = document.createElement("div")
 const clearBtn = document.createElement("button");
 const createBtn = document.createElement("button");
-
+const squares = grid.querySelectorAll("div");
+squares.forEach((div) => div.remove())
 
 body.appendChild(container);
 container.appendChild(btnContainer);
 btnContainer.appendChild(clearBtn);
 btnContainer.appendChild(createBtn);
-container.appendChild(gridContainer);
+container.appendChild(grid);
 container.setAttribute("id", "container")
 btnContainer.setAttribute("id", "btn-Container")
 
@@ -18,47 +19,34 @@ clearBtn.textContent = "Clear"
 createBtn.textContent = "Create Grid"
 clearBtn.classList.add("btn")
 createBtn.classList.add("btn")
-gridContainer.classList.add("Grid")
+grid.classList.add("Grid")
 
-
-function createRow() {
-    const row = document.createElement("div");
-    let rows = prompt("How many rows?")
-        if(!Number(rows)) {
-        alert("sorry but the input isn't a number..")
-    } else if(Number(row)) {
-        for (let i = 0; i <= row; i++) {
-            gridContainer.appendChild(row);
-            row.classList.add("row")
-        }
-        console.log(row)
-    }
-}
-
-
-function createCol() {
-let cols = prompt("How many columns?")
-    if(!Number(cols)) {
-    alert("sorry but the input isn't a number..")
-    } else if(Number(col)) {
-        for (let i = 0; i <= col; i++) {
-            const col = document.createElement("div");
-            gridContainer.appendChild(col);
-            col.classList.add("col")
-        }
-        console.log(col)
-    }       
-}
 
 function createGrid() {
-   createRow()
-   createCol()
-}
-
-function clear() {
-
-}
+    let input = prompt("How many *Cols* x *Rows* do you want?")
+        grid.style.gridTemplateColumns = `repeat(${input}, 1fr)`;
+        grid.style.gridTemplateRows = `repeat(${input}, 1fr)`;
+        
+    if(!Number(input) || input > 100) {
+    alert("too many squares or the input isn't a number.. try again")
+    } else if (input < 2) {
+        alert("Your Grid should atleast be a 2x2 Grid")
+    } else {
+        const gridSize = input * input;
+        for (let i = 0; i <= gridSize; i++) {
+            const square = document.createElement("div");
+            square.setAttribute("style", "background-color: blue;")
+            grid.insertAdjacentElement("beforeend", square);
+            square.classList.add("color");
+        }
+        
+    }        
+} 
 
 createBtn.addEventListener("click", createGrid)
-clearBtn.addEventListener("click", clear)
+this.addEventListener("mouseover", (e) => {
+    
+})
+
+
 
