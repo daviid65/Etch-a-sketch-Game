@@ -6,6 +6,8 @@ const clearBtn = document.createElement("button");
 const createBtn = document.createElement("button");
 const squares = grid.querySelectorAll("div");
 squares.forEach((div) => div.remove())
+const color = document.querySelector(".ColorChange")
+const test = document.querySelector(".block")
 
 body.appendChild(container);
 container.appendChild(btnContainer);
@@ -21,6 +23,14 @@ clearBtn.classList.add("btn")
 createBtn.classList.add("btn")
 grid.classList.add("Grid")
 
+function changeColor(event) {
+    let a = Math.floor(Math.random() * 256);
+    let b = Math.floor(Math.random() * 256);
+    let c = Math.floor(Math.random() * 256);
+    event.target.style.backgroundColor = `rgb(${a}, ${b}, ${c})`;
+
+    console.log(event)
+  }
 
 function createGrid() {
     let input = prompt("How many *Cols* x *Rows* do you want?")
@@ -35,18 +45,18 @@ function createGrid() {
         const gridSize = input * input;
         for (let i = 0; i <= gridSize; i++) {
             const square = document.createElement("div");
-            square.setAttribute("style", "background-color: blue;")
+            square.setAttribute("style", "background-color: white; box-shadow: 0 0 5px black;")
             grid.insertAdjacentElement("beforeend", square);
-            square.classList.add("color");
-        }
-        
+            square.addEventListener("mouseover", changeColor)
+        }   
     }        
-} 
+}
 
 createBtn.addEventListener("click", createGrid)
-this.addEventListener("mouseover", (e) => {
-    
-})
 
+
+test.addEventListener("mouseover", changeColor)
+test.style.height = "50px"
+test.style.width = "50px"
 
 
