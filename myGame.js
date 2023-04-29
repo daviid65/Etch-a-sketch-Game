@@ -4,6 +4,7 @@ const grid = document.createElement("div");
 const btnContainer = document.createElement("div")
 const clearBtn = document.createElement("button");
 const createBtn = document.createElement("button");
+const eraserBtn = document.createElement("button");
 const squares = grid.querySelectorAll("div");
 squares.forEach((div) => div.remove())
 const color = document.querySelector(".ColorChange");
@@ -17,6 +18,7 @@ body.appendChild(container);
 container.appendChild(settings);
 settings.appendChild(btnContainer);
 btnContainer.appendChild(clearBtn);
+btnContainer.appendChild(eraserBtn)
 btnContainer.appendChild(createBtn);
 container.appendChild(grid);
 ColorDiv.insertAdjacentElement("beforebegin", ColorDiv)
@@ -27,8 +29,11 @@ clearBtn.textContent = "Clear"
 clearBtn.style.backgroundColor = "red";
 clearBtn.style.fontWeight = "bold"
 createBtn.textContent = "Create Grid"
+eraserBtn.textContent = "eraser"
 clearBtn.classList.add("btn")
 createBtn.classList.add("btn")
+eraserBtn.classList.add("btn")
+eraserBtn.classList.add("eraser")
 grid.classList.add("Grid")
 
 function changeColor() {
@@ -36,8 +41,14 @@ function changeColor() {
 }
 
 
+function eraser() {
+
+}
+
+
 function clear() {
-    alert("eraser is activated")
+    grid.innerHTML = '';
+    createGrid()
 }
 
 

@@ -17,7 +17,8 @@
 }
 
 .btn {
-    padding: 12px 24px; 
+    padding: 12px 6px; 
+    width: 240px;
     background-color: green; 
     border: 1px solid black; 
     font-size: 20px; 
@@ -27,8 +28,13 @@
     transition: all 200ms;
 }
 
+.eraser {
+    background-color: white;
+}
+
 #btn-Container {
     display: flex;
+    align-items: center;
     flex-direction: column-reverse;
 }
 
@@ -70,7 +76,7 @@
     background-color: #252323;
     border-radius: 4px;
     width: 300px;
-    height: 500px;
+    height: 600px;
 }
 
 #footer {
