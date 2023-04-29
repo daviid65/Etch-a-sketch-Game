@@ -6,31 +6,40 @@ const clearBtn = document.createElement("button");
 const createBtn = document.createElement("button");
 const squares = grid.querySelectorAll("div");
 squares.forEach((div) => div.remove())
-const color = document.querySelector(".ColorChange")
-const test = document.querySelector(".block")
+const color = document.querySelector(".ColorChange");
+const ColorDiv = document.querySelector(".ColorGenerator");
+const settings = document.querySelector(".settings");
+const footer = document.getElementById("footer")
+
+
 
 body.appendChild(container);
-container.appendChild(btnContainer);
+container.appendChild(settings);
+settings.appendChild(btnContainer);
 btnContainer.appendChild(clearBtn);
 btnContainer.appendChild(createBtn);
 container.appendChild(grid);
+ColorDiv.insertAdjacentElement("beforebegin", ColorDiv)
 container.setAttribute("id", "container")
 btnContainer.setAttribute("id", "btn-Container")
 
 clearBtn.textContent = "Clear"
+clearBtn.style.backgroundColor = "red";
+clearBtn.style.fontWeight = "bold"
 createBtn.textContent = "Create Grid"
 clearBtn.classList.add("btn")
 createBtn.classList.add("btn")
 grid.classList.add("Grid")
 
-function changeColor(event) {
-    let a = Math.floor(Math.random() * 256);
-    let b = Math.floor(Math.random() * 256);
-    let c = Math.floor(Math.random() * 256);
-    event.target.style.backgroundColor = `rgb(${a}, ${b}, ${c})`;
+function changeColor() {
+    this.style.backgroundColor = "green"
+}
 
-    console.log(event)
-  }
+
+function clear() {
+    alert("eraser is activated")
+}
+
 
 function createGrid() {
     let input = prompt("How many *Cols* x *Rows* do you want?")
@@ -52,11 +61,7 @@ function createGrid() {
     }        
 }
 
-createBtn.addEventListener("click", createGrid)
-
-
-test.addEventListener("mouseover", changeColor)
-test.style.height = "50px"
-test.style.width = "50px"
+createBtn.addEventListener("click", createGrid);
+clearBtn.addEventListener("click", clear);
 
 
