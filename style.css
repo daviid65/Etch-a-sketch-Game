@@ -28,14 +28,15 @@
     transition: all 200ms;
 }
 
-.eraser {
-    background-color: white;
-}
 
 #btn-Container {
     display: flex;
     align-items: center;
     flex-direction: column-reverse;
+}
+
+.btn-color {
+    background-color: orange;
 }
 
 .btn:hover {
